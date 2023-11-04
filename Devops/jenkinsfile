@@ -1,0 +1,22 @@
+pipeline{¨
+agent any
+      stage('Compilar'){
+            steps{
+                  echo "compilando..." 
+                  sh "mvn clean compile"
+                 } 
+
+                         }
+      stage('Pruebas') {
+            steps {
+                   echo "Ejecutando pruebas..."
+                   sh "mvn test -Dspring.profiles.active=test -Dspring.data.mongodb.uri=mongodb://mongodb:27017/seguridad_test"
+                  }
+              post{
+                  success{
+                    junit "target.surefire-reports/*.xml"  
+                         }
+                  }
+                        } 
+
+         }
