@@ -1,5 +1,8 @@
 pipeline{¨
 agent any
+tools{
+     maven 'maven 3.9.5'
+     }
       stage('Compilar'){
             steps{
                   echo "compilando..." 
