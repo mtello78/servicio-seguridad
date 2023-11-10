@@ -12,13 +12,13 @@ stages{
 
                          }
       stage('Pruebas') {
-            steps {
+            steps{
                    echo "Ejecutando pruebas..."
                    sh "mvn test -Dspring.profiles.active=test -Dspring.data.mongodb.uri=mongodb://mongodb:27017/seguridad_test"
                   }
               post{
-                  success{
-                    junit "target.surefire-reports/*.xml"  
+                   success{
+                         junit "target/surefire-reports/*.xml"  
                          }
                   }
                         } 
