@@ -16,6 +16,17 @@ stages{
                    echo "Ejecutando pruebas..."
                    sh "mvn test -Dspring.profiles.active=test -Dspring.data.mongodb.uri=mongodb://mongodb:27017/seguridad_test"
                   }
+                       }
+      stage('Análisis de Código Estático') {
+             steps {sh 'mvn sonar:sonar'
+                   }
+                                           }
+
+      stage('Empaquetar') {
+            steps {sh 'mvn package'
+                   }
+                           }
+
               post{
                    success{
                          junit "target/surefire-reports/*.xml"  
