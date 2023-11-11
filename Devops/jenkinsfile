@@ -44,10 +44,6 @@ stages{
 
               
 
-            stage('Empaquetar') {
-                       steps {sh 'mvn package'
-                            }
-                                }
               
       } 
      }
