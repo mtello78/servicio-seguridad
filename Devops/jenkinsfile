@@ -17,16 +17,29 @@ stages{
                    sh "mvn test -Dspring.profiles.active=test -Dspring.data.mongodb.uri=mongodb://mongodb:27017/seguridad_test"
                   }
                        }
+      
       stage('Análisis de Código Estático') {
-             steps {sh 'mvn sonar:sonar'
-                   }
-                                           }
+           steps{
+                withSonarQubeEnv('sonarqube'){
+                               sh "mvn sonar:sonar \
+                                    -Dsonar.projectKey=curso-devops-sonar \
+                                    -Dsonar.projectName=curso-devops-sonar \
+                                    -Dsonar.projectVersion=1.0 \
+                                    -Dsonar.sources=. \
+                                    -Dsonar.java.binaries=. \
+                                    -Dsonar.language=java \
+                                    -Dsonar.sourceEncoding=UTF-8 \
+                                    -Dsonar.token=squ_a518fbd4c94eaae7ddd562ee190d976ab42880e2 \
+                                    -Dsonar.host.url=http://172.19.0.3:9000/"
+                }
+            }
 
-      stage('Empaquetar') {
-            steps {sh 'mvn package'
-                   }
-                           }
-
+             
+        }
+            stage('Empaquetar') {
+                       steps {sh 'mvn package'
+                            }
+                                }
               post{
                    success{
                          junit "target/surefire-reports/*.xml"  
