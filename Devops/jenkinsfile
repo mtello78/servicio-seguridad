@@ -1,7 +1,10 @@
 pipeline{
 agent any
 tools{
-     maven 'maven 3.9.5'
+     maven 'maven 3.9.5'  //solo es una etiqueta
+     }
+enviroment{
+    SONNAR_SCANNER=tool "SonnarScanner"  //llama a una herramienta y ponemos como etiqueta Sonnarscanner
      }
 stages{
       stage('Compilar'){
@@ -26,22 +29,21 @@ stages{
       
       stage('Análisis de Código Estático') {
            steps{
-                withSonarQubeEnv('sonarqube'){
-                               sh "mvn sonar:sonar \
-                                    -Dsonar.projectKey=curso-devops-sonar \
-                                    -Dsonar.projectName=curso-devops-sonar \
-                                    -Dsonar.projectVersion=1.0 \
-                                    -Dsonar.sources=. \
-                                    -Dsonar.java.binaries=. \
-                                    -Dsonar.language=java \
-                                    -Dsonar.sourceEncoding=UTF-8 \
-                                    -Dsonar.token=squ_93a3931f3a3559b2bae55566668b5b044b8749ad \
-                                    -Dsonar.host.url=http://172.19.0.3:9000/"
+                echo "Analizando codigo con Sonarqube... "
+                withSonarQubeEnv('sonarqube-portal'){
+                   sh "${SONAR_SCANNER}/bin/sonar-scanner -Dproject.settings=devops/sonar.properties"
+                       
                       }
-                  }
 
+             timeout(time:3, unit:'MINUTES')        // en caso demore mucho tiempo en generar el reporte aborta >3
+                 {waitForQualityGate abortPipeline:true}
+                  }
+                
              
                }
+
+              
+
             stage('Empaquetar') {
                        steps {sh 'mvn package'
                             }
