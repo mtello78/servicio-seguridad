@@ -4,7 +4,7 @@ tools{
      maven 'maven 3.9.5'  //solo es una etiqueta
      }
 environment{
-    SONNAR_SCANNER=tool "SonnarScanner"  //llama a una herramienta y ponemos como etiqueta Sonnarscanner
+    SONAR_SCANNER=tool "SonnarScanner"  //llama a una herramienta y ponemos como etiqueta Sonnarscanner
      }
 stages{
       stage('Compilar'){
