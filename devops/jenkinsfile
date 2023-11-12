@@ -30,7 +30,7 @@ stages{
       stage('Análisis de Código Estático') {
            steps{
                 echo "Analizando codigo con Sonarqube... "
-                withSonarQubeEnv("sonarqube-portal"){
+                withSonarQubeEnv('sonarqube-portal'){
                    sh "${SONAR_SCANNER}/bin/sonar-scanner -Dproject.settings=devops/sonar.properties"
                        
                       }
