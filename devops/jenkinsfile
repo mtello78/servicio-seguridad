@@ -35,7 +35,7 @@ stages{
                        
                       }
 
-             timeout(time:5, unit:'MINUTES')        // en caso demore mucho tiempo en generar el reporte aborta >3
+             timeout(time:10, unit:'MINUTES')        // en caso demore mucho tiempo en generar el reporte aborta >3
                  {waitForQualityGate abortPipeline:true}
                   }
                 
