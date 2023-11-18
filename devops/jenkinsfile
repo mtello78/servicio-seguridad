@@ -45,7 +45,7 @@ stages{
         stage('Build'){
             steps{
                   echo "Creando imagen..."
-                  sh "mvn package -DskpiTest"
+                  sh "mvn package -DskpiTests"
                   sh "docker build -t $URL_ARTIFACT_REGISTRY:$BUILD_NUMBER ."
                  }
                       }
