@@ -68,7 +68,7 @@ stages{
                          steps {
                                echo "Desplegando en cloud run..."
                                sh "$GCLOUD auth activate-service-account service-jenkins@curso-devops-manuel-2023.iam.gserviceaccount.com --key-file=$SERVICE_JENKINS"                 
-                               sh "$GCLOUD run deploy servicio-seguridad-carlos --image=$URL_ARTIFACT_REGISTRY:$BUILD_NUMBER --region=us-central1 --port=8080 --allow-unauthenticated --project=curso-devops-nov-2023"
+                               sh "$GCLOUD run deploy servicio-seguridad-manuel --image=$URL_ARTIFACT_REGISTRY:$BUILD_NUMBER --region=us-central1 --port=8080 --allow-unauthenticated --project=curso-devops-nov-2023"
                                
                                 }         }
 
