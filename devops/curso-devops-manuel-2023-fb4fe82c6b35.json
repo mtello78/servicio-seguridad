@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "curso-devops-manuel-2023",
+  "private_key_id": "fb4fe82c6b359b42897c416168079fcbf7f29613",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdd14VRrO0az86\ns0kwFFXANVXfMwlHe0swhKdMGL7v6CMD55wMjaobVvIf8QybDPBNYAhL9fzmu5Iw\nKDr294C/P5UEWqcg6d/fQ7Rjdoph3lf4voi4J1eK58hes6olbdMSjDh++Ze9is5b\ntmNsOFxMg6sRr5+aqs/0GrNnw2dlrVQaoUC3Say53qALts4xwHHz4AAnftTm/D1U\nvt67gRaqE2T1gsO03R6uCGtLn83XD9aOD9RYU9c100PYR+gbkADI6pfBj3+Afljh\ne3ExoeGXnrM1PMLT1OWagQO0n0Op3d7hSGwpN3ac1Ay44e1vWajQMJ1YTMRj9opZ\n9SnYaM89AgMBAAECggEABlR2lT9e2PlYtNjhL8wZeF0Mgyjvjg6QQraKbR4visBX\nrAAC/2QweuHfYNZVTeRSwqGCI9+TF4lhworTd/sSE14QdPjZ8BJGvBhiJ39r56xC\n+A5cu55lQAG6RchOJiwIiJ3XZY9OAMIUMo6d54tKdo7ycQcQ0Oxd6K+sF5c80FL7\nwGjfP6ni8BS2VlUCfI4i+CQ+SKMLkFoaRJzHGIydgFY5M70gOft1lQGOD2SgXF/P\nckny5kKInIzXWomvEsTCT0RDKLTeDUjB8J2lXLLCcKa1xhILjNQr8GkrXnHf/CbU\n/GZeqByKaM17DJvgVNQT0jU6/Y6a2pqKyy7iUNw1AQKBgQDPeej3qJrp70B2WKru\nQC36S4NO0/GH5Unbyke+/OwReWy72kj6obbBRsMEIzsjMq1gpPhJCKiZEnmNN20f\njYyjO6dBW32Ov0JKRKs+HpLCRg+zPyIpcpmiE8im2r/3yuDz2CCz+ViDGdd0k/8d\nt8Jq4wNmS63A1V01ZX1Lwk3VvQKBgQDCSz61KGuOd6q0v5ix4LNoCNVW0nmzfBGl\nil0cNujHGgliORMEY0x/qPI3mNoTDbPcE88uZPTEFOzK8vYgZykb9UdgmtT9CEkz\nvp7vdTDsv8kqJ8bGxX3ZaADTcEVh7TFgsE4lQ7kyo+Pg3mUTkm5qQgC9UDHyYsjP\nd5WzEF63gQKBgQCQYP+zyEr1XB75vD5Gyba1JPNdWbQMo4zAPIWs7IjCqEL4frCm\naP6qhTmUmYe/uLZaOLLm7/WTf/3CPb3cZT5nIU4E90vqmEHjOOIJunDabLLkQ5zc\nRvmOhkHtivBn2XCtf8tSMsRbhxId+BdicMwEYbGt8CAbvt68F8IXhEFx6QKBgG5i\ntaPS7RiqIFBEsooM8aDfs+V5+y7gBF6at7+56pKD1mT5rDZH/ERjRgoUS4GbvV4B\n2ymurelhQg8j7nYGZjK+LelSzkNcG8rMOBwv5rX7WF0c8DAqMA/+qMl39dNnITCf\nuiYtzeBZgLRXZfGytgykpyrnjxj4ysIkXOa5HDcBAoGBAKKmQb2AkDJ0ObmvyG/R\n6LE8hsOxZib02ET1f689QdLDf2B+QoLK4mNI+MvR77FbswQr7DwbRXjU+ll4sZSH\nX7ShUKV37ZT0hTLpffdVkd0OCHRASrIUhK52mTGaU/cNd4+iLSEEnqwdj8mub60O\nhmi7ZxWasRrDdbW2WStb/lXy\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-jenkins@curso-devops-manuel-2023.iam.gserviceaccount.com",
+  "client_id": "103966984792040438329",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-jenkins%40curso-devops-manuel-2023.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

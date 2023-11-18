@@ -3,8 +3,12 @@ agent any
 tools{
      maven 'maven 3.9.5'  //solo es una etiqueta
      }
-environment{
+environment{   //definiendo variables
     SONAR_SCANNER=tool "SonnarScanner"  //llama a una herramienta y ponemos como etiqueta Sonnarscanner
+    SERVICE_JENKINS = credentials('service-jenkins')
+    URL_ARTIFACT_REGISTRY = "us-central1-docker.pkg.dev/curso-devops-manuel-2023/develop/servicio-seguridad-manuel"
+    URL_REGION = "https://us-central1-docker.pkg.dev"
+    GCLOUD = "/opt/google-cloud-sdk/bin/gcloud"
      }
 stages{
       stage('Compilar'){
@@ -27,20 +31,47 @@ stages{
                      }
                        }
       
-      stage('Análisis de Código Estático') {
+      stage('Análisis de Código Estático'){
            steps{
                 echo "Analizando codigo con Sonarqube... "
                 withSonarQubeEnv('sonarqube-portal'){
                    sh "${SONAR_SCANNER}/bin/sonar-scanner -Dproject.settings=devops/sonar.properties"
-                       
+                                                    }
+
+                timeout(time:10, unit:'MINUTES')        // en caso demore mucho tiempo en generar el reporte aborta >3
+                {waitForQualityGate abortPipeline:true}
+                 }
+                                         }
+        stage('Build'){
+            steps{
+                  echo "Creando imagen..."
+                  sh "mvn package -DskpiTest"
+                  sh "docker build -t $URL_ARTIFACT_REGISTRY:$BUILD_NUMBER"
+                 }
                       }
 
-             timeout(time:10, unit:'MINUTES')        // en caso demore mucho tiempo en generar el reporte aborta >3
-                 {waitForQualityGate abortPipeline:true}
-                  }
-                
-             
-               }
+         stage ('Publicar Build'){
+                        steps{
+                              echo "Publicando imagen..."
+                              sh "docker login -u _json_key --password-stdin $URL_REGION < $SERVICE_JENKINS"
+                              sh "docker push $URL_ARTIFACT_REGISTRY:$BUILD_NUMBER"
+                             }
+                             post{
+                               always{
+                                     echo "eliminar la imagenes creadas..."
+                                     sh "docker $URL_ARTIFACT_REGISTRY:$BUILD_NUMBER"
+                                     }
+                                 }
+                                  }
+
+          stage('Desplegar en cloud run'){
+                         steps {
+                               echo "Desplegando en cloud run..."
+                               sh "$GCLOUD auth activate-service-account service-jenkins@curso-devops-manuel-2023.iam.gserviceaccount.com --key-file=$SERVICE_JENKINS"                 
+                               sh "$GCLOUD run deploy servicio-seguridad-carlos --image=$URL_ARTIFACT_REGISTRY:$BUILD_NUMBER --region=us-central1 --port=8080 --allow-unauthenticated --project=curso-devops-nov-2023"
+                               
+                                }         }
+
 
               
 
